@@ -1,0 +1,43 @@
+[project]
+name = "speculative-decoding-eval"
+version = "0.1.0"
+description = "Speculative decoding pipeline for LLM inference acceleration"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "datasets>=5.1.0",
+    "huggingface-hub>=2.2.0",
+    "matplotlib>=3.11.2",
+    "torch>=2.14.1",
+    "tqdm>=4.70.1",
+    "transformers>=5.20.2",
+    "wandb>=0.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.3.0",
+    "pytest>=8.0.0",
+    "mypy>=1.8.0",
+    "jupyter>=1.0.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+# E: pycodestyle, F: pyflakes, I: isort, UP: pyupgrade
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.mypy]
+ignore_missing_imports = true
+strict = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
